@@ -1,0 +1,152 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hailyuu</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+        <style>
+            /* 重設所有元素的內邊距和外邊距為 0 */
+            *{
+                padding: 0;
+                margin:0;
+            }
+
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                /* 和視窗一樣大 */
+                height: 100vh; 
+            }
+
+            .shell{
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                display: grid;
+                /* 設置兩列的高度 */
+                grid-template-rows: 570px 200px; 
+            }
+            
+            .box{
+                /* 將容器放在第一列，其高度為第一列的高度*/
+                grid-row: 1/2;
+                /* 將容器放在第一行，其寬度為第一到第七行的寬度 */
+                grid-column: 1/7;
+                width: 100vw;
+                height: 570px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                /* 自動隱藏超出的文字或圖片。 */
+                overflow: hidden; 
+                /* 設置3D轉換，以便創建立體效果 */
+                transform-style: preserve-3d;
+                /* 定義容器內包含的數量 */
+                --items: 4;
+                /* 定義容器內居中顯示的數量 */
+                --middle: 3;
+                /* 定義容器當前位置的元素 */
+                --position: 1;
+            }
+
+            div.item{
+                position: absolute;
+                width: 600px;
+                height: 350px;
+                background-color: antiquewhite;
+                /* 宣告變數: --自訂名稱；取值: var (--變數名稱) */
+                /* 定義一個CSS變數 --r 的值為var(--position)-var(--offset)，用於控制元素的位置和旋轉角度*/
+                --r: calc(var(--position) - var(--offset));
+                /* 定義變數 --abs 的值為 var(--r)*-1 和 var(--r) 中的最大值，可以想像為取 var(--r) 的絕對值*/
+                --abs: max(calc(var(--r)*-1), var(--r));
+                /* 元素的過度效果為所有屬性在0.25秒內以線性方式變化 */
+                transition: all 0.5s linear;
+                /* 選轉-10deg*var(--r)角度，並向X維負方向平移-650px*var(--r) */
+                transform: rotateY(calc(-10deg*var(--r))) translateX(calc(-650px*var(--r)));
+                /* 使當前的圖片位於最前面，當 position 和 offset 的距離越大，z-index就會越小 */
+                z-index: calc((var(--position)-var(--abs)));
+                box-shadow: 0px 9px 50px rgba(0, 0, 0, 0.6);
+                border-radius: 5px;
+            }
+
+            input {
+                width: 35px;
+                height: 35px;
+                margin: 10px;
+            }
+
+            .box .item:nth-child(1) {
+                --offset:1;
+                background-image: url(image/烏野橫幅.jpg);
+                background-size: 600px 350px;
+            }
+            .box .item:nth-child(2) {
+                --offset:2;
+                background-image: url(image/音駒橫幅.jpg);
+                background-size: 600px 350px;
+            }
+            .box .item:nth-child(3) {
+                --offset:3;
+                background-image: url(image/梟谷橫幅.jpg);
+                background-size: 600px 350px;
+            }
+            .box .item:nth-child(4) {
+                --offset:4;
+                background-image: url(image/稻荷崎橫幅.jpeg);
+                background-size: 600px 350px;
+            }
+
+            input:nth-of-type(1) {
+                /* 放在網格的第二行和第三行之間 */
+                grid-column: 2/3;
+                /* 放在網格的第二列和第三行列之間 */
+                grid-row: 2/3;
+            }
+            input:nth-of-type(2) {
+                grid-column: 3/4;
+                grid-row: 2/3;
+            }
+            input:nth-of-type(3) {
+                grid-column: 4/5;
+                grid-row: 2/3;
+            }
+            input:nth-of-type(4) {
+                grid-column: 5/6;
+                grid-row: 2/3;
+            }
+
+            input:nth-of-type(1):checked~.box {
+                --position: 1;
+            }
+            input:nth-of-type(2):checked~.box {
+                --position: 2;
+            }
+            input:nth-of-type(3):checked~.box {
+                --position: 3;
+            }
+            input:nth-of-type(4):checked~.box {
+                --position: 4;
+            }
+        </style>
+    </head>
+
+    <body>  
+        <!-- 定義包含 4 個圖片的網頁佈局，並使用 CSS Grid 來排列這些項目。每個 <input> 元素用來控制顯示的圖片，當選中某個 <input> 時，對應的圖片將被放置在中心位置。 -->
+        <div class="shell">
+            <input type="radio" name="position" checked>
+            <input type="radio" name="position">
+            <input type="radio" name="position">
+            <input type="radio" name="position">
+            <div class="box">
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+            </div>
+        </div>
+    </body>
+
+    </html>
