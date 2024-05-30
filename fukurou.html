@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+
+		<meta charset="UTF-8">
+		<title>梟谷</title>
+		
+		<style>
+		
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				min-height: 100vh;
+				background-color: #000000;
+			}
+
+			.shell {
+				position: relative;
+				width: auto; /* 讓 .shell 的寬度根據內容自適應 */
+				display: flex;
+				justify-content: center;
+				flex-wrap: wrap;
+				/* 設定 3d 變化 */
+				transform-style: preserve-3d;
+				/* 增加透視效果 */
+				perspective: 900px;
+			}
+
+			.shell .box {
+				position: relative;
+				width: 168px; /* 調整卡片大小，使得七張卡片在網頁上可以一字排開不會換行 */
+				height: 210px;
+				transition: 0.3s;
+				overflow: hidden;
+				margin: 12px;
+				transform: rotateY(0deg);
+				transition-delay: .1s;
+				border-radius: 5px;
+				border: #fff 3px solid;
+			}
+
+			/* 當滑鼠所有卡片的父元素節點 shell 上時，所有卡片向 y 軸翻轉 20 度 */
+			.shell:hover .box {
+				transform: rotateY(20deg);
+			}
+
+			/* 當滑鼠懸浮在目前卡片上時，目前卡片的翻轉角度為 0，並放大 1.2, 5 倍，並加陰影 */
+			.shell .box:hover {
+				transform: rotateY(0deg) scale(1.25);
+				box-shadow: 0 25px 40px rgba(0, 0, 0, 0.7);
+				z-index: 1;
+			}
+
+			/* 當滑鼠懸浮在卡片上時，目前卡片後面的所有卡片全部都反向翻轉負 20 度 */
+			.shell .box:hover~.box {
+				transform: rotateY(-20deg);
+			}
+
+			.shell .box .images img {
+				width: 100%;
+			}
+
+			.shell .box .content {
+				position: absolute;
+				top: 0;
+				width: 80%;
+				height: 100%;
+				z-index: 999;
+				padding: 15px;
+			}
+
+			.shell .box .content h2 {
+				position: absolute;
+				top: 15px;
+				right: 3px;
+				color: rgb(255, 255, 255);
+				transition: 0.3s;
+				font-size: 20px;
+				transform: translateY(-100px);
+			}
+
+			.shell .box:hover .content h2 {
+				transform: translateY(-15px);
+			}
+
+			.shell .box .content p {
+				color: rgb(0, 0, 0);
+				transition: 0.3s;
+				font-size: 10px;
+				transform: translateY(300px);
+				background-color: rgba(255, 255, 255, 0.8);
+			}
+
+			.shell .box:hover .content p {
+				transform: translateY(100px);
+			}
+			
+		</style>
+	</head>
+
+	<body>
+
+		<div class="shell">
+		
+			<div class="box">
+				<div class="images">
+					<img src="./image/onaga.jpg">
+				</div>
+				<div class="content">
+					<h2>尾長涉</h2>
+					<p>一年級生，梟谷學園排球部中間手
+					</p>
+					<p>背號：12
+					</p>
+					<p>最近的煩惱：一部分的同班同學弄錯他的姓氏並稱呼他「面長同學」
+					</p>
+				</div>
+			</div>
+			
+			<div class="box">
+				<div class="images">
+					<img src="./image/sarukui.jpg">
+				</div>
+				<div class="content">
+					<h2>猿杙大和</h2>
+					<p>三年級生，梟谷學園排球部主攻手
+					</p>
+					<p>背號：3
+					</p>
+					<p>最近的煩惱：有時候明明沒有在笑別人卻對他說「不準笑」
+					</p>
+				</div>
+			</div>
+			
+			<div class="box">
+				<div class="images">
+					<img src="./image/akaashi.jpg">
+				</div>
+				<div class="content">
+					<h2>赤葦京治</h2>
+					<p>二年級生，梟谷學園排球部副主將兼舉球員
+					</p>
+					<p>背號：5
+					</p>
+					<p>最近的煩惱：希望自己的力量能夠再強一些
+					</p>
+				</div>
+			</div>
+			
+			<div class="box">
+				<div class="images">
+					<img src="./image/bokuto.jpg">
+				</div>
+				<div class="content">
+					<h2>木兔光太郎</h2>
+					<p>三年級生，梟谷學園排球部主將兼王牌，實力排在全國前五名內的主攻手
+					</p>
+					<p>背號：4
+					</p>
+					<p>最近的煩惱：…「煩惱」怎麼寫來著？？
+					</p>
+				</div>
+			</div>
+			
+			<div class="box">
+				<div class="images">
+					<img src="./image/konoha.jpg">
+				</div>
+				<div class="content">
+					<h2>木葉秋紀</h2>
+					<p>三年級生，梟谷學園排球部主攻手，被稱呼為「Mr.樣樣通，樣樣鬆」
+					</p>
+					<p>背號：7
+					</p>
+					<p>最近的煩惱：隱隱感覺到木兔的那股傻勁是天才那一級別的
+					</p>
+				</div>
+			</div>
+			
+			<div class="box">
+				<div class="images">
+					<img src="./image/washio.jpg">
+				</div>
+				<div class="content">
+					<h2>鷲尾辰生</h2>
+					<p>三年級生，梟谷學園排球部中間手
+					</p>
+					<p>背號：2
+					</p>
+					<p>最近的煩惱：初次和他見面的小孩子哭了
+					</p>
+				</div>
+			</div>
+			
+			<div class="box">
+				<div class="images">
+					<img src="./image/komi.jpg">
+				</div>
+				<div class="content">
+					<h2>小見春樹</h2>
+					<p>三年級生，梟谷學園排球部自由球員
+					</p>
+					<p>背號：11
+					</p>
+					<p>最近的煩惱：午餐之後沒有睡午覺的時間
+					</p>
+				</div>
+			</div>
+			
+		</div>
+		
+	</body>
+
+</html>
