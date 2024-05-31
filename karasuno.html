@@ -13,7 +13,6 @@
             justify-content: center;
             margin: 0;
             background-image: url(image/karasuno_background.png);
-            backdrop-filter:blur(5px);
             background-size: cover;
             background-repeat: no-repeat;
         }
@@ -75,8 +74,8 @@
         }
 
         table {
-            width: 100vw;
-            height: 50vh;
+            width: 90vw;
+            height: 45vh;
         }
 
         td {
@@ -84,9 +83,20 @@
             text-align: center;
         }
 
+        a {       
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 30px;
+            text-decoration: none;
+            color: #ff6e94; /* 设置颜色为彩虹小马的颜色 */
+            font-weight: bold; /* 加粗 */
+        }
+
     </style>
 </head>
 <body>
+    <a href="index.html">&#8592;</a>
     <table>
         <tr>
             <td>
@@ -201,10 +211,11 @@
 <script>
     $(document).ready(function() {
         $('.container-inner').each(function() {
-            var containerWidth = $(this).height()-10; // 取得.container-inner的高度
+            var containerHeight = $(this).height(); // 取得.container-inner的高度
+            var circleHeight = containerHeight - 10
             // 讓.circle的長寬一樣
-            $(this).find('.circle').css('width', containerWidth);
-            $(this).find('.circle').css('height', containerWidth); 
+            $(this).find('.circle').css('width', circleHeight + 'px');
+            $(this).find('.circle').css('height', circleHeight + 'px'); 
         });
     });
 </script>
