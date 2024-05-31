@@ -1,101 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>烏野</title>
+    <title>Haikyuu</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <style>
-        * {
-            padding: 0;
+        body {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-around; /* 改为space-around以平均分配 */
+            height: 100vh;
             margin: 0;
-            box-sizing: border-box;
+            background-color: antiquewhite;
+        }
+
+        .characters {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            height: 312px;
+            width: 100%; /* 调整宽度适应父容器 */
+            transform: scale(0.5);
+            transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 0);
+        }
+
+        .container-inner {
+            position: relative;
+            /* clip-path: path("M 390,400 C 390,504.9341 304.9341,590 200,590 95.065898,590 10,504.9341 10,400 V 10 H 200 390 Z"); */
+ -webkit-clip-path:circle(50% at 50% 50%);
+            top: -200px;
+     display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .circle {
+            position: absolute;
+            background-color: var(--color);
+            height: 380px;
+            width: 380px;
+            top: 210px;
+            left: calc(50%); /* 修改定位方式 */
+            border-radius: 50%;
+        }
+
+        .img {
+            position: relative;
+            width: 340px;
+            top: 164px;
+            left: calc(50% - 170px); /* 修改定位方式 */
+            transform: translateY(20px) scale(1.1);
+            transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .divider {
+            height: 3px;
+            width: 130px;
+            border-radius: 5px;
+            background-color: var(--color);
+        }
+
+        .characters h1 {
+            color: #474747;
+            margin: 16px 0 0;
+        }
+
+        .characters p {
+            color: #474747;
+            margin-top: 5px;
+        }
+
+        .container:hover {
+            transform: scale(0.5);
+        }
+
+        .container:hover img {
+            transform: translateY(0px) scale(1.2);
         }
 
         table {
             width: 100%;
-            height: 100vh;
-            border-collapse: collapse;
+            table-layout: fixed;
         }
-
-        th, td{
-            text-align: center; 
-            overflow: hidden; /* 確保內容不會溢出 */
-            word-wrap: break-word; /* 自動換行 */
-        }
-
-        .characters {
-            height: 100px;
-        }
-
-        .characters img{
-            height: 100px;
-        }
-
-        .name {
-            height: 50px;
-        }
-
-        img {
-            max-height: 390px;
-            width: auto;
-            height: auto;
-        }
-
-        p {
-            margin: 5px;
-        }
-        p {
-            background-color:aqua;
+        
+        tr {
+            height:50vh;        
         }
     </style>
 </head>
-
 <body>
-
     <table>
         <tr>
-            <td style="height: 50px;">
-                <a href="index.html">返回上一頁</a>
+            <td>
+                <div class="characters" style="--color: #EB9D23"> 
+                    <div class="container">
+                        <div class="container-inner">
+                            <div class="circle"></div>
+                            <img src="image/shouyou.webp" class="img">
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+                    <h1>日向翔陽</h1>
+                    <p>位置: MB <br> 身高: 162.8 cm </p>
+                </div>
             </td>
-            <td colspan="2"></td>
-            <td colspan="3" rowspan="3">
-                <img src="image/shouyou.webp" alt="人物圖片">
+
+            <td>
+                <div class="characters" style="--color: #004274;"> 
+                    <div class="container">
+                        <div class="container-inner">
+                            <div class="circle"></div>
+                            <img src="image/kageyama.webp" class="img">
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+                    <h1>影山飛雄</h1>
+                    <p>位置: S <br> 身高: 180.6 cm </p>
+                </div>
+
             </td>
-            <td rowspan="3"></td>
+            <td>
+                <div class="characters" style="--color: #EB9D23;"> 
+                    <div class="container">
+                        <div class="container-inner">
+                            <div class="circle"></div>
+                            <img src="image/tsuki.webp" class="img">
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+                    <h1>月島螢</h1>
+                    <p>位置: MB <br> 身高: 188.3 cm </p>
+                </div>
+
+            </td>
+            <td>
+                <div class="characters" style="--color: #004274;"> 
+                    <div class="container">
+                        <div class="container-inner">
+                            <div class="circle"></div>
+                            <img src="image/tanaka.webp" class="img">
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+                    <h1>田中龍之介</h1>
+                    <p>位置: WS <br> 身高: 177.2 cm </p>
+                </div>
+            </td>
         </tr>
+
         <tr>
             <td>
-            <td colspan="2" id="introduction" rowspan="2"  style="width:100px">
-                <h2>日向翔陽</h2>
-                <p>本作的主人公，性格明朗單純，和宛如對手一般存在的影山經常互相競爭。超群的身體能力彌補了基礎技術和身高上的不足。目標是成為烏野高中的王牌。以看著那小小的身軀無法想像的優異跳躍力為賣點，在比賽中不斷用快攻迅速得分，使對手把注意力集中放在日向身上，讓其他主攻手在對手缺乏防備時活躍起來，因而被稱之為「最強的誘餌」。</p>
+                <div class="characters" style="--color: #004274;"> 
+                    <div class="container">
+                        <div class="container-inner">
+                            <div class="circle"></div>
+                            <img src="image/daichi.webp" class="img">
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+                    <h1>澤村大地</h1>
+                    <p>位置: WS <br> 身高: 176.8 cm </p>
+                </div>
             </td>
-        </tr>
-        <tr>
             <td>
-        </tr>
-        <tr class="characters">
-            <td>
-                <img src="image/shouyou.webp" alt="人物圖片">
+                <div class="characters" style="--color: #EB9D23;"> 
+                    <div class="container">
+                        <div class="container-inner">
+                            <div class="circle"></div>
+                            <img src="image/asahi.webp" class="img">
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <h1>東峰旭</h1>
+                    <p>位置: WS <br> 身高: 177.2 cm </p>
+                </div>
             </td>
-            <td>人物縮圖</td>
-            <td>人物縮圖</td>
-            <td>人物縮圖</td>
-            <td>人物縮圖</td>
-            <td>人物縮圖</td>
-            <td>人物縮圖</td>
-        </tr>
-        <tr class="name">
-            <td>人物名稱</td>
-            <td>人物名稱</td>
-            <td>人物名稱</td>
-            <td>人物名稱</td>
-            <td>人物名稱</td>
-            <td>人物名稱</td>
-            <td>人物名稱</td>
+            <td>
+                <div class="characters" style="--color: #004274;"> 
+                    <div class="container">
+                        <div class="container-inner">
+                            <div class="circle"></div>
+                            <img src="image/yuu.webp" class="img">
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <h1>西谷夕</h1>
+                    <p>位置: L <br> 身高: 159.3 cm </p>
+                </div>
+            </td>
         </tr>
     </table>
-
 </body>
-
-</html> 
+</html>

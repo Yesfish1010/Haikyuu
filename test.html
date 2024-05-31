@@ -1,150 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>烏野</title>
+    <title>Haikyuu</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <style>
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-
-        table {
-            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-around; /* 改为space-around以平均分配 */
             height: 100vh;
-            border-collapse: collapse;
-            background-color: #fff;
-            margin: 20px auto;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        th, td {
-            text-align: center;
-            overflow: hidden;
-            word-wrap: break-word;
-            padding: 10px;
-            border: 1px solid #ddd;
+            margin: 0;
+            background-color: antiquewhite;
         }
 
         .characters {
-            height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 14%; /* 平均分配7个元素，每个占14%宽度 */
+            margin: 10px 0; /* 增加垂直间距 */
         }
 
-        .characters img {
-            height: 100px;
-            width: auto;
-            margin: 0 auto;
-            display: block;
+        .container {
+            height: 312px;
+            width: 100%; /* 调整宽度适应父容器 */
+            cursor: pointer;
+            transform: scale(0.5);
+            transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 0);
         }
 
-        .name {
-            height: 50px;
-            font-weight: bold;
-            background-color: #f9f9f9;
+        .container-inner {
+            position: relative;
+            clip-path: path("M 390,400 C 390,504.9341 304.9341,590 200,590 95.065898,590 10,504.9341 10,400 V 10 H 200 390 Z");
+            top: -200px;
         }
 
-        img {
-            max-height: 390px;
-            width: auto;
-            height: auto;
-            display: block;
-            margin: 0 auto;
+        .circle {
+            position: absolute;
+            background-color: var(--color);
+            height: 380px;
+            width: 380px;
+            top: 210px;
+            left: calc(50% - 190px); /* 修改定位方式 */
+            border-radius: 50%;
         }
 
-        a {
-            text-decoration: none;
-            color: #007bff;
+        .img {
+            position: relative;
+            width: 340px;
+            top: 164px;
+            left: calc(50% - 170px); /* 修改定位方式 */
+            transform: translateY(20px) scale(1.1);
+            transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        a:hover {
-            text-decoration: underline;
+        .divider {
+            height: 3px;
+            width: 130px;
+            border-radius: 5px;
+            background-color: var(--color);
         }
 
-        h2 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 10px;
-            border-radius: 10px;
-            display: inline-block;
+        .characters h1 {
+            color: aqua;
+            margin: 16px 0 0;
         }
 
-        p {
-            font-size: 1em;
-            line-height: 1.5;
-            margin-bottom: 20px;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 10px;
-            border-radius: 10px;
+        .characters p {
+            color: aqua;
+            margin-top: 5px;
         }
 
-        @media (max-width: 768px) {
-            table {
-                width: 90%;
-            }
-            
-            .characters img {
-                height: 80px;
-            }
+        .container:hover {
+            transform: scale(0.5);
+        }
+
+        .container:hover img {
+            transform: translateY(0px) scale(1.2);
         }
     </style>
 </head>
-
 <body>
+    <div class="characters" style="--color: aqua;"> 
+        <div class="container">
+            <div class="container-inner">
+                <div class="circle"></div>
+                <img src="image/asahi.webp" class="img">
+            </div>
+        </div>
+        <div class="divider"></div>
+        <h1>Asahi</h1>
+        <p>hi</p>
+    </div>
 
-    <table>
-        <tr>
-            <td style="height: 50px;">
-                <a href="index.html">返回上一頁</a>
-            </td>
-            <td colspan="2"></td>
-            <td colspan="3" rowspan="3">
-                <img src="image/shouyou.webp" alt="人物圖片">
-            </td>
-            <td rowspan="3"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td colspan="2" rowspan="2" style="width:100px">
-                <h2>日向翔陽</h2>
-                <p>本作的主人公，性格明朗單純，和宛如對手一般存在的影山經常互相競爭。超群的身體能力彌補了基礎技術和身高上的不足。目標是成為烏野高中的王牌。以看著那小小的身軀無法想像的優異跳躍力為賣點，在比賽中不斷用快攻迅速得分，使對手把注意力集中放在日向身上，讓其他主攻手在對手缺乏防備時活躍起來，因而被稱之為「最強的誘餌」。</p>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-        </tr>
-        <tr class="characters">
-            <td>
-                <img src="image/shouyou.webp" alt="人物圖片">
-            </td>
-            <td>人物縮圖</td>
-            <td>人物縮圖</td>
-            <td>人物縮圖</td>
-            <td>人物縮圖</td>
-            <td>人物縮圖</td>
-            <td>人物縮圖</td>
-        </tr>
-        <tr class="name">
-            <td>人物名稱</td>
-            <td>人物名稱</td>
-            <td>人物名稱</td>
-            <td>人物名稱</td>
-            <td>人物名稱</td>
-            <td>人物名稱</td>
-            <td>人物名稱</td>
-        </tr>
-    </table>
+    <div class="characters" style="--color: coral;"> 
+        <div class="container">
+            <div class="container-inner">
+                <div class="circle"></div>
+                <img src="image/kageyama.webp" class="img">
+            </div>
+        </div>
+        <div class="divider"></div>
+        <h1>Kageyama</h1>
+        <p>hi</p>
+    </div>
 
+    <div class="characters" style="--color: lightblue;"> 
+        <div class="container">
+            <div class="container-inner">
+                <div class="circle"></div>
+                <img src="image/hinata.webp" class="img">
+            </div>
+        </div>
+        <div class="divider"></div>
+        <h1>Hinata</h1>
+        <p>hi</p>
+    </div>
+
+    <div class="characters" style="--color: lightgreen;"> 
+        <div class="container">
+            <div class="container-inner">
+                <div class="circle"></div>
+                <img src="image/nishinoya.webp" class="img">
+            </div>
+        </div>
+        <div class="divider"></div>
+        <h1>Nishinoya</h1>
+        <p>hi</p>
+    </div>
+
+    <div class="characters" style="--color: pink;"> 
+        <div class="container">
+            <div class="container-inner">
+                <div class="circle"></div>
+                <img src="image/sugawara.webp" class="img">
+            </div>
+        </div>
+        <div class="divider"></div>
+        <h1>Sugawara</h1>
+        <p>hi</p>
+    </div>
+
+    <div class="characters" style="--color: violet;"> 
+        <div class="container">
+            <div class="container-inner">
+                <div class="circle"></div>
+                <img src="image/tsukishima.webp" class="img">
+            </div>
+        </div>
+        <div class="divider"></div>
+        <h1>Tsukishima</h1>
+        <p>hi</p>
+    </div>
+
+    <div class="characters" style="--color: yellow;"> 
+        <div class="container">
+            <div class="container-inner">
+                <div class="circle"></div>
+                <img src="image/yamaguchi.webp" class="img">
+            </div>
+        </div>
+        <div class="divider"></div>
+        <h1>Yamaguchi</h1>
+        <p>hi</p>
+    </div>
 </body>
-
 </html>
-
