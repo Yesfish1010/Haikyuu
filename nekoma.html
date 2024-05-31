@@ -1,105 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Haikyuu</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <style>
-        body {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            background-color:antiquewhite;
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./style.css" />
+  <title>Document</title>
+  <style>
+    body{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, Helvetica, sans-serif;
+        min-height: 100vh;
+        background: linear-gradient(45deg,#1f1d36,#1e5128);
+    }
+
+    .container{
+        width: 1200px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(350px,1fr));
+        grid-gap: 15px;
+        margin: 0 auto;
+    }
+
+        .container .card{
+        position: relative;
+        width: 300px;
+        height: 400px;
+        margin:0 auto;
+        background: #fff;
+        box-shadow: 10px 15px 60px rgba(33, 35, 35, 0.9);
         }
 
-        .characters {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 250px;
-            overflow: hidden;;
+        .container .card .face{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         }
 
-        .container {
-            height: 312px;
-            width: 400px;
-            cursor: pointer;
-            transform: scale(0.5);
-            transition:  transform 250ms cubic-bezier(0.4,0,0.2,0);
+        .container .card .face.face1{
+        box-sizing: border-box;
+        padding: 20px;
         }
 
-        .container-inner {
-            position: relative;
-            clip-path: path("M 390,400 C 390,504.9341 304.9341,590 200,590 95.065898,590 10,504.9341 10,400 V 10 H 200 390 Z");
-            top: -200px;
+        .container .card:nth-child(1) .face.face2{
+        background: linear-gradient(45deg, #19282F, #D3ECA7);
         }
 
-        .circle {
-            position: absolute;
-            background-color: var(--color);
-            height: 380px;
-            width: 380px;
-            top: 210px;
-            left: 10px;
-            border-radius: 50%;
+        .container .card:nth-child(2) .face.face2{
+        background: linear-gradient(45deg, #151D3B, #DADBBD);
         }
 
-        .img {
-            position: relative;
-            width: 340px;
-            top: 164px;
-            left: 22px;
-            transform: translateY(20px) scale(1.1);
-            transition: trabsform 250ms cubic-bezier(0.4,0,0.2,1);
+        .container .card:nth-child(3) .face.face2{
+        background: linear-gradient(45deg, #464660, #F1E9E5);
         }
 
-        .divider {
-            height: 3px;
-            width: 130px;
-            border-radius: 5px;
-            background-color: var(--color);
+        .container .card .face.face1 h2{
+        margin: 0;
+        padding: 0;
         }
 
-        .characters h1{
-            color: aqua;
-            margin: 16px,0,0;
+        .container .card .face.face2{
+        background: #111;
+        transition: 0.5s;
         }
 
-        .characters p{
-            color: aqua;
-            margin-top: 5px;
+        .container .card .face.face2::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.1);
         }
 
-        .container:hover {
-            transform: scale(0.5);
+        .container .card:hover .face.face2{
+        height: 60px;
         }
 
-        .container:hover img{
-            transform: translateY(0px) scale(1.2);
+        .container .card .face.face2 h2{
+        margin: 0;
+        padding: 0;
+        font-size: 10em;
+        color: #fff;
+        transition: 0.5s;
         }
 
-    </style>
+        .container .card:hover .face.face2 h2{
+        font-size: 2em;
+        }
+  </style>
 </head>
 
 <body>
-    <div class="characters" style="--color: aqua;"> 
-        <div class="container">
-            <div class="container-inner">
-                <!-- 畫圓 -->
-                <div class="circle"></div>
-                <img src="image/asahi.webp" class="img">
-            </div>
+  <div class="container">
+    <div class="card">
+      <div class="face face1">
+        <div class="content">
+          <h2>Are You finding Something??</h2>
+          <p> Let me help you , but first go back and read the description again..
+            ok so now i am hope you are clear...
+            so just go to 3rd one you will find your ans :)</p>
         </div>
-
-        <div class="divider"></div>
-        <h1>asahi</h1>
-        <p>hi</p>
+      </div>
+      <div class="face face2">
+        <h2>01</h2>
+      </div>
     </div>
+    <div class="card">
+      <div class="face face1">
+        <div class="content">
+          <h2>So You Are Finally Here :)</h2>
+          <p> And If you are here that means you are not mature enough to crack this..
+            I already told you the biggest hint in 1st card go back on it. </p>
+        </div>
+      </div>
+      <div class="face face2">
+        <h2>02</h2>
+      </div>
+    </div>
+    <div class="card">
+      <div class="face face1">
+        <div class="content">
+          <h2>That's Very Bad</h2>
+          <p>  I told you already read the description carefully...
+            but its ok let me give you a hint go check out the 2rd card ...
+            There is something which is realated to what you want :).</p>
+        </div>
+      </div>
+      <div class="face face2">
+        <h2>03</h2>
+      </div>
+    </div>
+  
+  </div>
+
+  </div>
 </body>
 
 </html>
-

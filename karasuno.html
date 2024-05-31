@@ -10,31 +10,33 @@
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            justify-content: space-around; /* 改为space-around以平均分配 */
-            height: 100vh;
+            justify-content: center;
             margin: 0;
-            background-color: antiquewhite;
+            background-image: url(image/karasuno_background.png);
+            backdrop-filter:blur(5px);
+            background-size: cover;
+            background-repeat: no-repeat;
         }
 
         .characters {
+            height: 100%;
+            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
         .container {
-            height: 312px;
-            width: 100%; /* 调整宽度适应父容器 */
-            transform: scale(0.5);
-            transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 0);
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
         }
 
         .container-inner {
             position: relative;
-            /* clip-path: path("M 390,400 C 390,504.9341 304.9341,590 200,590 95.065898,590 10,504.9341 10,400 V 10 H 200 390 Z"); */
- -webkit-clip-path:circle(50% at 50% 50%);
-            top: -200px;
-     display: flex;
+            height: 100%;
+            width: 100%;
+            display: flex;
             justify-content: center;
             align-items: center;
         }
@@ -42,55 +44,46 @@
         .circle {
             position: absolute;
             background-color: var(--color);
-            height: 380px;
-            width: 380px;
-            top: 210px;
-            left: calc(50%); /* 修改定位方式 */
             border-radius: 50%;
         }
 
         .img {
-            position: relative;
-            width: 340px;
-            top: 164px;
-            left: calc(50% - 170px); /* 修改定位方式 */
-            transform: translateY(20px) scale(1.1);
+            width: 100%;
+            transform: translateY(20px) scale(1);
             transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .divider {
             height: 3px;
-            width: 130px;
+            width: 50%;
             border-radius: 5px;
             background-color: var(--color);
         }
 
         .characters h1 {
-            color: #474747;
-            margin: 16px 0 0;
+            color: white;
+            margin:  0 0;
         }
 
         .characters p {
-            color: #474747;
-            margin-top: 5px;
+            color: white;
+            margin: 0;
         }
 
-        .container:hover {
-            transform: scale(0.5);
-        }
-
-        .container:hover img {
-            transform: translateY(0px) scale(1.2);
+        .container:hover .img {
+            transform: scale(1);
         }
 
         table {
-            width: 100%;
-            table-layout: fixed;
+            width: 100vw;
+            height: 50vh;
         }
-        
-        tr {
-            height:50vh;        
+
+        td {
+            width: 25vw;
+            text-align: center;
         }
+
     </style>
 </head>
 <body>
@@ -100,11 +93,12 @@
                 <div class="characters" style="--color: #EB9D23"> 
                     <div class="container">
                         <div class="container-inner">
-                            <div class="circle"></div>
-                            <img src="image/shouyou.webp" class="img">
+                            <div class="circle">
+                                <img src="image/shouyou.webp" class="img">
+                            </div>
+                            
                         </div>
                     </div>
-
                     <div class="divider"></div>
                     <h1>日向翔陽</h1>
                     <p>位置: MB <br> 身高: 162.8 cm </p>
@@ -115,58 +109,58 @@
                 <div class="characters" style="--color: #004274;"> 
                     <div class="container">
                         <div class="container-inner">
-                            <div class="circle"></div>
-                            <img src="image/kageyama.webp" class="img">
+                            <div class="circle">
+                                <img src="image/kageyama.webp" class="img">
+                            </div>
                         </div>
                     </div>
-
                     <div class="divider"></div>
                     <h1>影山飛雄</h1>
                     <p>位置: S <br> 身高: 180.6 cm </p>
                 </div>
-
             </td>
             <td>
                 <div class="characters" style="--color: #EB9D23;"> 
                     <div class="container">
                         <div class="container-inner">
-                            <div class="circle"></div>
-                            <img src="image/tsuki.webp" class="img">
+                            <div class="circle">
+                                <img src="image/tsuki.webp" class="img">
+                            </div>
                         </div>
                     </div>
-
                     <div class="divider"></div>
                     <h1>月島螢</h1>
                     <p>位置: MB <br> 身高: 188.3 cm </p>
                 </div>
-
             </td>
             <td>
                 <div class="characters" style="--color: #004274;"> 
                     <div class="container">
                         <div class="container-inner">
-                            <div class="circle"></div>
-                            <img src="image/tanaka.webp" class="img">
+                            <div class="circle">
+                                <img src="image/tanaka.webp" class="img">
+                            </div>
                         </div>
                     </div>
-
                     <div class="divider"></div>
                     <h1>田中龍之介</h1>
                     <p>位置: WS <br> 身高: 177.2 cm </p>
                 </div>
             </td>
         </tr>
+    </table>
 
+    <table>
         <tr>
             <td>
                 <div class="characters" style="--color: #004274;"> 
                     <div class="container">
                         <div class="container-inner">
-                            <div class="circle"></div>
-                            <img src="image/daichi.webp" class="img">
+                            <div class="circle">
+                                <img src="image/daichi.webp" class="img">
+                            </div>
                         </div>
                     </div>
-
                     <div class="divider"></div>
                     <h1>澤村大地</h1>
                     <p>位置: WS <br> 身高: 176.8 cm </p>
@@ -176,8 +170,9 @@
                 <div class="characters" style="--color: #EB9D23;"> 
                     <div class="container">
                         <div class="container-inner">
-                            <div class="circle"></div>
-                            <img src="image/asahi.webp" class="img">
+                            <div class="circle">
+                                <img src="image/asahi.webp" class="img">
+                            </div>
                         </div>
                     </div>
                     <div class="divider"></div>
@@ -189,8 +184,9 @@
                 <div class="characters" style="--color: #004274;"> 
                     <div class="container">
                         <div class="container-inner">
-                            <div class="circle"></div>
-                            <img src="image/yuu.webp" class="img">
+                            <div class="circle">
+                                <img src="image/yuu.webp" class="img">
+                            </div>
                         </div>
                     </div>
                     <div class="divider"></div>
@@ -201,4 +197,16 @@
         </tr>
     </table>
 </body>
+
+<script>
+    $(document).ready(function() {
+        $('.container-inner').each(function() {
+            var containerWidth = $(this).height()-10; // 取得.container-inner的高度
+            // 讓.circle的長寬一樣
+            $(this).find('.circle').css('width', containerWidth);
+            $(this).find('.circle').css('height', containerWidth); 
+        });
+    });
+</script>
+
 </html>
