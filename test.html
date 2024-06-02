@@ -5,208 +5,126 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Haikyuu</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
     <style>
-        body {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
+        /* Reset CSS */
+        * {
+            padding: 0;
             margin: 0;
-            background-image: url(image/karasuno_background.png);
-            backdrop-filter:blur(5px);
-            background-size: cover;
-            background-repeat: no-repeat;
+            cursor: pointer;
         }
 
-        .characters {
-            height: 100%;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .container {
-            height: 100%;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        .container-inner {
-            position: relative;
-            height: 100%;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .circle {
+        video, img {
             position: absolute;
-            background-color: var(--color);
-            border-radius: 50%;
-        }
-
-        .img {
             width: 100%;
-            transform: translateY(20px) scale(1);
-            transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
+            top: 0;
+            left: 0;
+            object-fit: cover;
         }
 
-        .divider {
-            height: 3px;
-            width: 50%;
-            border-radius: 5px;
-            background-color: var(--color);
-        }
-
-        .characters h1 {
+        #hintText {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 24px;
             color: white;
-            margin:  0 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            z-index: 1; /* Ensure the text is on top */
         }
 
-        .characters p {
-            color: white;
-            margin: 0;
-        }
-
-        .container:hover .img {
-            transform: scale(1);
-        }
-
-        table {
-            width: 100vw;
-            height: 50vh;
-        }
-
-        td {
-            width: 25vw;
+        #formContainer {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
             text-align: center;
         }
 
+        #formContainer input, #formContainer textarea {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        #formContainer input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #FFA500;
+            color: white;
+            font-size: 16px;
+        }
     </style>
 </head>
+
 <body>
-    <table>
-        <tr>
-            <td>
-                <div class="characters" style="--color: #EB9D23"> 
-                    <div class="container">
-                        <div class="container-inner">
-                            <div class="circle">
-                                <img src="image/shouyou.webp" class="img">
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <div class="divider"></div>
-                    <h1>日向翔陽</h1>
-                    <p>位置: MB <br> 身高: 162.8 cm </p>
-                </div>
-            </td>
+    <video id="PV" autoplay muted>
+        <source src="startVideo.mp4" type="video/mp4">
+    </video>
 
-            <td>
-                <div class="characters" style="--color: #004274;"> 
-                    <div class="container">
-                        <div class="container-inner">
-                            <div class="circle">
-                                <img src="image/kageyama.webp" class="img">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="divider"></div>
-                    <h1>影山飛雄</h1>
-                    <p>位置: S <br> 身高: 180.6 cm </p>
-                </div>
-            </td>
-            <td>
-                <div class="characters" style="--color: #EB9D23;"> 
-                    <div class="container">
-                        <div class="container-inner">
-                            <div class="circle">
-                                <img src="image/tsuki.webp" class="img">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="divider"></div>
-                    <h1>月島螢</h1>
-                    <p>位置: MB <br> 身高: 188.3 cm </p>
-                </div>
-            </td>
-            <td>
-                <div class="characters" style="--color: #004274;"> 
-                    <div class="container">
-                        <div class="container-inner">
-                            <div class="circle">
-                                <img src="image/tanaka.webp" class="img">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="divider"></div>
-                    <h1>田中龍之介</h1>
-                    <p>位置: WS <br> 身高: 177.2 cm </p>
-                </div>
-            </td>
-        </tr>
-    </table>
+    <p id="hintText">點擊跳過影片</p>
 
-    <table>
-        <tr>
-            <td>
-                <div class="characters" style="--color: #004274;"> 
-                    <div class="container">
-                        <div class="container-inner">
-                            <div class="circle">
-                                <img src="image/daichi.webp" class="img">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="divider"></div>
-                    <h1>澤村大地</h1>
-                    <p>位置: WS <br> 身高: 176.8 cm </p>
-                </div>
-            </td>
-            <td>
-                <div class="characters" style="--color: #EB9D23;"> 
-                    <div class="container">
-                        <div class="container-inner">
-                            <div class="circle">
-                                <img src="image/asahi.webp" class="img">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="divider"></div>
-                    <h1>東峰旭</h1>
-                    <p>位置: WS <br> 身高: 177.2 cm </p>
-                </div>
-            </td>
-            <td>
-                <div class="characters" style="--color: #004274;"> 
-                    <div class="container">
-                        <div class="container-inner">
-                            <div class="circle">
-                                <img src="image/yuu.webp" class="img">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="divider"></div>
-                    <h1>西谷夕</h1>
-                    <p>位置: L <br> 身高: 159.3 cm </p>
-                </div>
-            </td>
-        </tr>
-    </table>
-</body>
+    <img id="endImage" src="image/startImg.jpg" style="opacity: 0;">
 
-<script>
-    $(document).ready(function() {
-        $('.container-inner').each(function() {
-            var containerWidth = $(this).height()-10; // 取得.container-inner的高度
-            // 讓.circle的長寬一樣
-            $(this).find('.circle').css('width', containerWidth);
-            $(this).find('.circle').css('height', containerWidth); 
+    <div id="formContainer">
+        <h2>Contact Us</h2>
+        <form id="contactForm" onsubmit="return validateForm()">
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <script>
+        var video = $('#PV');
+        var image = $('#endImage');
+        var flag = 0;
+
+        function showImage() {
+            video.fadeOut(500, function() {
+                image.css('opacity', '1');
+                $('#hintText').text('點擊進入主頁面');
+            });
+        }
+
+        video.on('ended', function() {
+            showImage();
+            flag = 1;
         });
-    });
-</script>
 
-</html>
+        // Event listener for screen click to skip video or show form
+        $(document).on('click', function() {
+            if (flag === 0) {
+                showImage();
+                flag = 1;
+            } else {
+                $('#formContainer').fadeIn();
+            }
+        });
+
+        function validateForm() {
+            var name = $('#name').val();
+            var email = $('#email').val();
+            var message = $('#message').val();
+
+            if (name && email && message) {
+                alert('Form submitted successfully!\nName: ' + name + '\nEmail: ' + email + '\nMessage: ' + message);
+                $('#contactForm')[0].reset();
+                return false; // Prevent actual form submission
+            } else {
+                alert('Please fill out all fields.');
+                return false; // Prevent actual form submission
+            }
+        }
+    </script>
+</bod

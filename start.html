@@ -7,7 +7,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
     <style>
-        /* Reset CSS */
         *{
             padding: 0;
             margin:0;
@@ -31,9 +30,43 @@
             font-size: 24px;
             color: white;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            z-index: 1; /* Ensure the text is on top */
+            /* 確保字不會被遮住 */
+            z-index: 1; 
         }
 
+        #login {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #ffffff;
+            padding: 5px;
+        }
+
+        #login input {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        #login input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #FFA500;
+            color: white;
+            font-size: 16px;
+        }
     </style>
 
 </head>
@@ -47,6 +80,13 @@
     
     <img id="endImage" src="image/startImg.jpg" style="opacity: 0;">
 
+    <div id="login">
+        <h2>登入</h2>
+        <form id="form" onsubmit="validate(); return false;">
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
     
 </body>
 
@@ -69,16 +109,22 @@
 
     // Event listener for screen click to skip video
     $(document).on('click', function() {
-        if (flag === 0){
+        if (flag === 0) {
             showImage();
-            flag=1;
-        }
-        else{
-            // window.location.href 表示當前視窗的 URL，透過重新指定可以將當前頁面連向指定的 URL
-            window.location.href = "index.html"
+            flag = 1;
+        } else {
+            $('#login').fadeIn();
         }
     });
 
+    function validate() {
+        var name = $('#name').val();
+
+        if (name) {
+             // window.location.href 表示當前視窗的 URL，透過重新指定可以將當前頁面連向指定的 URL
+             window.location.href = "index.html"
+        } 
+    }
 </script>
 
 </html>
