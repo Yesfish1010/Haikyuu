@@ -6,6 +6,10 @@
 
     <style>
         body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
             /*透明度 0.5 的黑色半透明遮罩 */
             background-color: rgba(0, 0, 0, .5);
             /*設置背景混和模式為相乘模式 */
@@ -15,7 +19,7 @@
             background-repeat: no-repeat;
         }
 
-        a.btn {
+        .btn {
             background: #a00000;
             border-radius: 4px;
             box-shadow: 0 2px 0px 0 rgba(0, 0, 0, 0.25);
@@ -27,15 +31,15 @@
             transition: all 0.1s 0s ease-out;
         }
         
-        .no-touch a.btn:hover {
+        .no-touch .btn:hover {
             background: #00a2ad;
             box-shadow: 0px 8px 2px 0 rgba(0, 0, 0, 0.075);
             transform: translateY(-2px);
             transition: all 0.25s 0s ease-out;
         }
 
-        .no-touch a.btn:active,
-        a.btn:active {
+        .no-touch .btn:active,
+        .btn:active {
             background: #008a93;
             box-shadow: 0 1px 0px 0 rgba(255, 255, 255, 0.25);
             transform: translate3d(0, 1px, 0);
@@ -43,33 +47,36 @@
         }
 
         .cards {
-            margin: 80px auto;
-            max-width: 100%;
+            margin: 0;
             text-align: center;
+            width: 90vw;
+            height: 90vh;
         }
 
-        div.card {
+        .card {
+            width:80%;
+            height: 80%;
             background: #ffffff;
             display: inline-block;
-            margin: 8px;
-            max-width: 300px;
-            perspective: 1000;
             position: relative;
             text-align: left;
             transition: all 0.3s 0s ease-in;
             z-index: 1;
         }
-        div.card img {
-            width: 300px;
-            height: 165px;
+
+        .card img {
+            width: 100%;
+            height: 100%;
         }
-        div.card div.card-title {
+
+        .card .card-title {
             background: #ffffff;
             padding: 6px 15px 10px;
             position: relative;
             z-index: 0;
         }
-        div.card div.card-title a.toggle-info {
+
+        .card .card-title .toggle-info {
             border-radius: 32px;
             height: 32px;
             padding: 0;
@@ -78,7 +85,8 @@
             top: 10px;
             width: 32px;
         }
-        div.card div.card-title a.toggle-info span {
+
+        .card .card-title .toggle-info span {
             background: #ffffff;
             display: block;
             height: 2px;
@@ -87,6 +95,7 @@
             transition: all 0.15s 0s ease-out;
             width: 12px;
         }
+
         div.card div.card-title a.toggle-info span.left {
             right: 14px;
             transform: rotate(45deg);
@@ -95,7 +104,8 @@
             left: 14px;
             transform: rotate(-45deg);
         }
-        div.card div.card-title h2 {
+
+        .card .card-title h2 {
             font-size: 24px;
             font-weight: 700;
             letter-spacing: -0.05em;
@@ -108,14 +118,15 @@
             font-weight: 600;
             letter-spacing: -0.025em;
         }
-        div.card div.card-description {
+
+        .card .card-description {
             padding: 0 15px 10px;
             position: relative;
-            font-size: 14px;
         }
-        div.card div.card-actions {
+
+        .card .card-actions {
             box-shadow: 0 2px 0px 0 rgba(0, 0, 0, 0.075);
-            padding: 10px 15px 20px;
+            padding: 10px 15px;
             text-align: center;
         }
         div.card div.card-flap {
@@ -169,22 +180,28 @@
             transition: all 0.3s 0.2s ease-out;
         }
 
-        table {
-            margin: 5px;
-            width: 90vw;
-            height: 90vh;
-        }
-
         td {
             width: 30vw;
             height: 30vh;
-            text-align: center;
+            padding: 5px;
+        }
+
+        #back_btn {       
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 30px;
+            text-decoration: none;
+            color: #ff6e94; /* 设置颜色为彩虹小马的颜色 */
+            font-weight: bold; /* 加粗 */
         }
     </style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </head>
 <body>
+    <a href="index.html" id="back_btn">&#8592;</a>
+
     <table class="cards">
         <tr>
             <td>
